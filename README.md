@@ -7,7 +7,7 @@
 </div>
 
 
-> Wrapper for the CSB sandpack, which is only to be used for React examples in the org lib docs.
+> The CSB sandpack wrapper, which is only to be used for React examples in the org lib docs.
 
 ## Installation
 
