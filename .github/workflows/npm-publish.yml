@@ -20,7 +20,7 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn ci
-      - run: npm publish --workspace @open-tech-world/react-examples-sandbox
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
       

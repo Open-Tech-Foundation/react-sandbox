@@ -23,7 +23,7 @@
     "build": "parcel build",
     "lint": "eslint src/**",
     "type-check": "tsc",
-    "ci": "yarn build && yarn lint && yarn check"
+    "ci": "yarn build && yarn lint && yarn type-check"
   },
   "publishConfig": {
     "access": "public"
