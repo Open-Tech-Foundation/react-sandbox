@@ -1,6 +1,6 @@
 {
   "name": "@open-tech-world/react-examples-sandbox",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The CSB sandpack wrapper, which is only to be used for React examples in the org lib docs.",
   "homepage": "",
   "keywords": [
