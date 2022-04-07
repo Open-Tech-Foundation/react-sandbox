@@ -9,14 +9,16 @@ import '@codesandbox/sandpack-react/dist/index.css';
 export type Files = Record<string, string>;
 
 interface SandBoxProps {
+  lib: string;
   code: string;
   files: Files;
   ts: boolean;
 }
 
 export default function SandBox(props: SandBoxProps) {
-  const { code, files, ts } = props;
+  const { lib, code, files, ts } = props;
 
+  const ORG_NAME = '@open-tech-world';
   const sandboxFiles = files
     ? files
     : ts
@@ -27,17 +29,20 @@ export default function SandBox(props: SandBoxProps) {
         '/App.js': code,
       };
 
+  const dependencies: Record<string, string> = {
+    react: 'latest',
+    'react-dom': 'latest',
+    'react-scripts': 'latest',
+  };
+
+  dependencies[`${ORG_NAME}/${lib}`] = 'latest';
+
   return (
     <SandpackProvider
       template={ts ? 'react-ts' : 'react'}
       customSetup={{
         files: sandboxFiles,
-        dependencies: {
-          react: 'latest',
-          'react-dom': 'latest',
-          'react-scripts': 'latest',
-          '@open-tech-world/react-form': 'latest',
-        },
+        dependencies: dependencies,
       }}
     >
       <SandpackThemeProvider theme={'monokai-pro'}>
