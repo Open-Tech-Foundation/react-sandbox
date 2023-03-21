@@ -4,7 +4,7 @@
 
 ⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
 
-![](Screenshot.png)
+![Screenshot](./Screenshot.png)
 
 </div>
 

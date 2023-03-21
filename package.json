@@ -29,7 +29,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "git@github.com:@open-tech-foundation/react-sandbox.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-tech-foundation/react-sandbox.git"
+  },
   "author": "Thanga Ganapathy",
   "license": "MIT",
   "devDependencies": {
