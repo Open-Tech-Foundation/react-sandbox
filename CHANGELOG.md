@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.3.1
+
+### Patch Changes
+
+- 7e332f5: Fix pkg repo url & readme screenshot path
+
 ## 0.3.0
 
 ### Minor Changes
