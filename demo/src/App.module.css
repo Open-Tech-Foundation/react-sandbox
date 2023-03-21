@@ -1,0 +1,8 @@
+.app {
+  padding: 25px 50px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}

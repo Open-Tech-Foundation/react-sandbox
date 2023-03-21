@@ -1,66 +1,61 @@
 import {
   SandpackProvider,
-  SandpackThemeProvider,
   SandpackCodeEditor,
   SandpackPreview,
+  SandpackLayout,
+  SandpackConsole,
 } from '@codesandbox/sandpack-react';
-import '@codesandbox/sandpack-react/dist/index.css';
+import Tabs from './Tabs';
 
-export type Files = Record<string, string>;
-
-interface SandBoxProps {
-  lib: string;
+interface Props {
   code: string;
-  files: Files;
-  ts: boolean;
+  deps?: string[];
+  files?: Record<string, string>;
+  template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts';
+  cdns?: string[];
 }
 
-export default function SandBox(props: SandBoxProps) {
-  const { lib, code, files, ts } = props;
-
-  const ORG_NAME = '@open-tech-world';
-  const sandboxFiles = files
-    ? files
-    : ts
-    ? {
-        '/App.tsx': code,
-      }
-    : {
-        '/App.js': code,
-      };
-
-  const dependencies: Record<string, string> = {
-    react: 'latest',
-    'react-dom': 'latest',
-    'react-scripts': 'latest',
+function getDefaultTemplateFile(code: string, template: string) {
+  const templateFile: Record<string, string> = {
+    react: '/App.js',
+    'react-ts': '/App.tsx',
+    vanilla: '/index.js',
+    'vanilla-ts': '/index.ts',
   };
+  const key = templateFile[template];
 
-  dependencies[`${ORG_NAME}/${lib}`] = 'latest';
+  return {
+    [key as string]: code,
+  };
+}
+
+export default function SandBox(props: Props) {
+  const { deps = [], code, files, template = 'react', cdns = [] } = props;
+  const sandboxFiles = { ...getDefaultTemplateFile(code, template), ...files };
+
+  const sandboxDeps: Record<string, string> = {};
+  deps.forEach((d) => (sandboxDeps[d] = 'latest'));
 
   return (
     <SandpackProvider
-      template={ts ? 'react-ts' : 'react'}
+      template={template}
+      options={{ externalResources: cdns }}
+      theme="dark"
+      files={sandboxFiles}
       customSetup={{
-        files: sandboxFiles,
-        dependencies: dependencies,
+        dependencies: sandboxDeps,
       }}
     >
-      <SandpackThemeProvider theme={'monokai-pro'}>
-        <SandpackCodeEditor
-          showInlineErrors
-          showLineNumbers
-          customStyle={{ height: '500px' }}
-          showTabs
-        />
-        <SandpackPreview
-          customStyle={{
-            marginTop: '15px',
-            border: '1px solid black',
-            height: '500px',
-          }}
-          showNavigator
-        />
-      </SandpackThemeProvider>
+      <Tabs
+        labels={['CODE', 'PREVIEW', 'CONSOLE']}
+        panels={[
+          <SandpackLayout>
+            <SandpackCodeEditor showInlineErrors showLineNumbers showTabs />
+          </SandpackLayout>,
+          <SandpackPreview />,
+          <SandpackConsole standalone resetOnPreviewRestart />,
+        ]}
+      />
     </SandpackProvider>
   );
 }
