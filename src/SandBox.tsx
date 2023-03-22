@@ -37,25 +37,36 @@ export default function SandBox(props: Props) {
   deps.forEach((d) => (sandboxDeps[d] = 'latest'));
 
   return (
-    <SandpackProvider
-      template={template}
-      options={{ externalResources: cdns }}
-      theme="dark"
-      files={sandboxFiles}
-      customSetup={{
-        dependencies: sandboxDeps,
-      }}
-    >
-      <Tabs
-        labels={['CODE', 'PREVIEW', 'CONSOLE']}
-        panels={[
-          <SandpackLayout>
-            <SandpackCodeEditor showInlineErrors showLineNumbers showTabs />
-          </SandpackLayout>,
-          <SandpackPreview />,
-          <SandpackConsole standalone resetOnPreviewRestart />,
-        ]}
-      />
-    </SandpackProvider>
+    <div style={{ height: '350px' }}>
+      <SandpackProvider
+        template={template}
+        options={{ externalResources: cdns }}
+        theme="dark"
+        files={sandboxFiles}
+        customSetup={{
+          dependencies: sandboxDeps,
+        }}
+      >
+        <Tabs
+          labels={['CODE', 'PREVIEW', 'CONSOLE']}
+          panels={[
+            <SandpackLayout>
+              <SandpackCodeEditor
+                showInlineErrors
+                showLineNumbers
+                showTabs
+                showRunButton
+              />
+            </SandpackLayout>,
+            <SandpackPreview showNavigator style={{ height: '300px' }} />,
+            <SandpackConsole
+              showSyntaxError
+              resetOnPreviewRestart
+              style={{ height: '300px' }}
+            />,
+          ]}
+        />
+      </SandpackProvider>
+    </div>
   );
 }
