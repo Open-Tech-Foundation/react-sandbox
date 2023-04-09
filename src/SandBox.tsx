@@ -13,6 +13,7 @@ interface Props {
   files?: Record<string, string>;
   template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts';
   cdns?: string[];
+  style?: Record<string, string>;
 }
 
 function getDefaultTemplateFile(code: string, template: string) {
@@ -30,14 +31,29 @@ function getDefaultTemplateFile(code: string, template: string) {
 }
 
 export default function SandBox(props: Props) {
-  const { deps = [], code, files, template = 'react', cdns = [] } = props;
+  const {
+    deps = [],
+    code,
+    files,
+    template = 'react',
+    cdns = [],
+    ...otherProps
+  } = props;
   const sandboxFiles = { ...getDefaultTemplateFile(code, template), ...files };
+  const defaultStyles = {
+    height: '350px',
+  };
+
+  const styles = {
+    ...defaultStyles,
+    ...otherProps.style,
+  };
 
   const sandboxDeps: Record<string, string> = {};
   deps.forEach((d) => (sandboxDeps[d] = 'latest'));
 
   return (
-    <div style={{ height: '350px' }}>
+    <div style={styles}>
       <SandpackProvider
         template={template}
         options={{ externalResources: cdns }}
@@ -48,21 +64,23 @@ export default function SandBox(props: Props) {
         }}
       >
         <Tabs
+          style={styles}
           labels={['CODE', 'PREVIEW', 'CONSOLE']}
           panels={[
-            <SandpackLayout>
+            <SandpackLayout style={{ height: '100%' }}>
               <SandpackCodeEditor
                 showInlineErrors
                 showLineNumbers
                 showTabs
                 showRunButton
+                style={{ height: '100%' }}
               />
             </SandpackLayout>,
-            <SandpackPreview showNavigator style={{ height: '300px' }} />,
+            <SandpackPreview showNavigator style={{ height: '100%' }} />,
             <SandpackConsole
               showSyntaxError
               resetOnPreviewRestart
-              style={{ height: '300px' }}
+              style={{ height: '100%' }}
             />,
           ]}
         />

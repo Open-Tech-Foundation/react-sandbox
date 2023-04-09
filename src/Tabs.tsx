@@ -3,9 +3,10 @@ import { useState } from 'react';
 interface Props {
   labels: string[];
   panels: JSX.Element[];
+  style: Record<string, string>;
 }
 
-export default function Tabs({ labels, panels }: Props) {
+export default function Tabs({ labels, panels, style }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
@@ -29,7 +30,12 @@ export default function Tabs({ labels, panels }: Props) {
           </button>
         ))}
       </div>
-      <div style={{ position: 'relative' }}>
+      <div
+        style={{
+          position: 'relative',
+          height: `calc(${style['height']} - 50px`,
+        }}
+      >
         {panels.map((p, i) => (
           <div
             key={i}
@@ -41,6 +47,7 @@ export default function Tabs({ labels, panels }: Props) {
               width: '100%',
               border: '1px solid gray',
               borderRadius: '5px',
+              height: '100%',
             }}
           >
             {p}
