@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.6.0
+
+### Minor Changes
+
+- eb83c75: Added style prop to the sandbox component
+
 ## 0.5.0
 
 ### Minor Changes
