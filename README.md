@@ -35,14 +35,6 @@ pnpm add @opentf/react-sandbox
 ```ts
 import { SandBox } from '@opentf/react-sandbox';
 
-interface Props {
-  code: string; // Template specific default file content
-  deps?: string[]; // npm dependencies, eg: ['lodash']
-  files?: Record<string, string>;
-  template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts'; // Default "react"
-  cdns?: string[]; // Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']
-}
-
 export default function App() {
   const code = `export default function App() {
       return <h1>Hello world</h1>
@@ -50,6 +42,19 @@ export default function App() {
   `;
 
   return <SandBox code={code} />;
+}
+```
+
+## Props
+
+```ts
+interface Props {
+  code: string; // Template specific default file content
+  deps?: string[]; // npm dependencies, eg: ['lodash']
+  files?: Record<string, string>;
+  template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts'; // Default "react"
+  cdns?: string[]; // Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']
+  tabIndex?: number; // Default 0
 }
 ```
 

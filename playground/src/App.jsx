@@ -10,7 +10,7 @@ function App() {
     <div className={styles.app}>
       <h1>@opentf/react-sandbox</h1>
       <SandBox template="react" code={code} style={{ height: '500px' }} />
-      <SandBox template="react" code={code} />
+      <SandBox tabIndex={1} template="react" code={code} />
     </div>
   );
 }
