@@ -9,6 +9,7 @@ import Tabs from './Tabs';
 
 interface Props {
   code: string;
+  tabIndex?: number;
   deps?: string[];
   files?: Record<string, string>;
   template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts';
@@ -32,6 +33,7 @@ function getDefaultTemplateFile(code: string, template: string) {
 
 export default function SandBox(props: Props) {
   const {
+    tabIndex,
     deps = [],
     code,
     files,
@@ -64,6 +66,7 @@ export default function SandBox(props: Props) {
         }}
       >
         <Tabs
+          tabIndex={tabIndex}
           style={styles}
           labels={['CODE', 'PREVIEW', 'CONSOLE']}
           panels={[

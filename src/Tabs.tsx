@@ -4,10 +4,11 @@ interface Props {
   labels: string[];
   panels: JSX.Element[];
   style: Record<string, string>;
+  tabIndex?: number | undefined;
 }
 
-export default function Tabs({ labels, panels, style }: Props) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export default function Tabs({ tabIndex, labels, panels, style }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(tabIndex || 0);
 
   return (
     <div>
