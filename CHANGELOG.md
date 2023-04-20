@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.7.0
+
+### Minor Changes
+
+- 8bc197c: Added tabIndex prop for sandbox
+
 ## 0.6.0
 
 ### Minor Changes
