@@ -1,6 +1,6 @@
 {
   "name": "@opentf/react-sandbox",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "The CodeSandbox sandpack wrapper with tabs layout.",
   "homepage": "",
   "keywords": [
