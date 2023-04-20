@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.8.0
+
+### Minor Changes
+
+- 9857106: Added template specific default files config
+
 ## 0.7.0
 
 ### Minor Changes
