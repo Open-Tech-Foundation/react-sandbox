@@ -10,6 +10,11 @@
 
 > The [CodeSandbox](https://codesandbox.io/) sandpack wrapper with tabs layout.
 
+## View Demo
+
+- [CodeSandbox](https://codesandbox.io/s/react-sandbox-bcggdd)
+- [Stackblitz](https://stackblitz.com/edit/vitejs-vite-ic6mks?file=src/App.jsx) (If preview is not working, try `Open in New Tab` button)
+
 ## Installation
 
 Using npm
@@ -52,7 +57,17 @@ interface Props {
   code: string; // Template specific default file content
   deps?: string[]; // npm dependencies, eg: ['lodash']
   files?: Record<string, string>;
-  template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts'; // Default "react"
+  template?:
+    | 'react'
+    | 'react-ts'
+    | 'vanilla'
+    | 'vanilla-ts'
+    | 'static'
+    | 'nextjs'
+    | 'node'
+    | 'vite'
+    | 'vite-react'
+    | 'vite-react-ts'; // Default "react"
   cdns?: string[]; // Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']
   tabIndex?: number; // Default 0
 }
