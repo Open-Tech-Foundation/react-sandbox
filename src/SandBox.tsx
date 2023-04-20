@@ -4,6 +4,7 @@ import {
   SandpackPreview,
   SandpackLayout,
   SandpackConsole,
+  SandpackPredefinedTemplate,
 } from '@codesandbox/sandpack-react';
 import Tabs from './Tabs';
 
@@ -12,7 +13,7 @@ interface Props {
   tabIndex?: number;
   deps?: string[];
   files?: Record<string, string>;
-  template?: 'react' | 'react-ts' | 'vanilla' | 'vanilla-ts';
+  template?: SandpackPredefinedTemplate;
   cdns?: string[];
   style?: Record<string, string>;
 }
@@ -23,8 +24,18 @@ function getDefaultTemplateFile(code: string, template: string) {
     'react-ts': '/App.tsx',
     vanilla: '/index.js',
     'vanilla-ts': '/index.ts',
+    static: '/index.html',
+    nextjs: 'pages/index.js',
+    node: '/index.js',
+    vite: '/index.js',
+    'vite-react': '/App.jsx',
+    'vite-react-ts': '/App.tsx',
   };
   const key = templateFile[template];
+
+  if (!key) {
+    return {};
+  }
 
   return {
     [key as string]: code,

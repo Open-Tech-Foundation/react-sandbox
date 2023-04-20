@@ -57,6 +57,6 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.1.9"
+    "@codesandbox/sandpack-react": "^2.6.1"
   }
 }
