@@ -9,6 +9,29 @@ interface Props {
 
 export default function Tabs({ tabIndex, labels, panels, style }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(tabIndex || 0);
+  const getStyles = (i: number) => {
+    const styles: Record<string, string> = {
+      background: i === selectedIndex ? '#0074D9' : '#AAAAAA',
+      color: 'white',
+      padding: '8px',
+      fontSize: '14px',
+      fontWeight: 'bold',
+      cursor: 'pointer',
+    };
+    if (selectedIndex === 0 && i == 1) {
+      styles['borderLeft'] = styles['borderTop'] = styles['borderBottom'] = '0';
+      styles['borderRight'] = '1px solid gray';
+    } else if (selectedIndex === 2 && i == 1) {
+      styles['borderRight'] =
+        styles['borderTop'] =
+        styles['borderBottom'] =
+          '0';
+      styles['borderLeft'] = '1px solid gray';
+    } else {
+      styles['border'] = '0';
+    }
+    return styles;
+  };
 
   return (
     <div>
@@ -17,15 +40,7 @@ export default function Tabs({ tabIndex, labels, panels, style }: Props) {
           <button
             key={i}
             onClick={() => setSelectedIndex(i)}
-            style={{
-              background: i === selectedIndex ? '#0074D9' : '#AAAAAA',
-              color: 'white',
-              padding: '8px',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              border: '0',
-              cursor: 'pointer',
-            }}
+            style={getStyles(i)}
           >
             {l}
           </button>
