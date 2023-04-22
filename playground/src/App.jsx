@@ -4,8 +4,24 @@ import styles from './App.module.css';
 function App() {
   const nodeCode = `import {range} from "@opentf/utils";
   console.log(range(1, 8));
+  console.log(range(1, 5));
+  const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  res.end('Hello world');
+});
+
+server.listen(port, hostname, () => {
+  console.log(\`Server running at http://\${hostname}:\${port}/\`);
+});
   `;
   const reactCode = `export default function App() {
+    console.log('App rendered');
     return <h1>Hello React world</h1>
   }`;
 
@@ -28,7 +44,7 @@ function App() {
   </html>`;
 
   const indexJSCode = `import "./styles.css";
-
+  
   document.getElementById("app").innerHTML = "<h1>Hello world</h1>";
   `;
 
@@ -36,11 +52,24 @@ function App() {
     <div className={styles.app}>
       <h1>@opentf/react-sandbox</h1>
       <SandBox
+        tabIndex={2}
+        template="vite-react"
+        code={reactCode}
+        consoleType="Advanced"
+      />
+      <SandBox
+        tabIndex={2}
+        template="node"
+        deps={['@opentf/utils']}
+        code={nodeCode}
+        consoleType="Advanced"
+      />
+      {/* <SandBox
         tabIndex={1}
         template="react"
         code={reactCode}
-        style={{ height: '500px' }}
-      />
+        consoleType="Basic"
+      /> */}
       {/* <SandBox
         tabIndex={1}
         template="static"
@@ -48,10 +77,10 @@ function App() {
         files={{ '/styles.css': 'body {  color: orange; }' }}
       /> */}
       <SandBox
-        tabIndex={1}
+        tabIndex={2}
         template="vite-react"
         code={reactCode}
-        consoleType="Advanced"
+        consoleType="Basic"
       />
     </div>
   );

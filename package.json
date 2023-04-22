@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.6.1",
-    "console-feed": "^3.5.0"
+    "console-feed": "^3.5.0",
+    "strip-ansi": "^7.0.1"
   }
 }
