@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.9.0
+
+### Minor Changes
+
+- 757863c: Added consoleType prop for basic & advanced(console-feed) console.
+
 ## 0.8.1
 
 ### Patch Changes
