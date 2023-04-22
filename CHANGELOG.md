@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.10.0
+
+### Minor Changes
+
+- 281b642: Added client-server tabs to the advanced console.
+
 ## 0.9.0
 
 ### Minor Changes
