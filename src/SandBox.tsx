@@ -7,9 +7,11 @@ import {
   SandpackPredefinedTemplate,
 } from '@codesandbox/sandpack-react';
 import Tabs from './Tabs';
+import { LogsContainer } from './LogsContainer';
 
 interface Props {
   code: string;
+  consoleType: 'Basic' | 'Advanced';
   tabIndex?: number;
   deps?: string[];
   files?: Record<string, string>;
@@ -50,6 +52,7 @@ export default function SandBox(props: Props) {
     files,
     template = 'react',
     cdns = [],
+    consoleType = 'Basic',
     ...otherProps
   } = props;
   const sandboxFiles = { ...getDefaultTemplateFile(code, template), ...files };
@@ -91,11 +94,15 @@ export default function SandBox(props: Props) {
               />
             </SandpackLayout>,
             <SandpackPreview showNavigator style={{ height: '100%' }} />,
-            <SandpackConsole
-              showSyntaxError
-              resetOnPreviewRestart
-              style={{ height: '100%' }}
-            />,
+            consoleType === 'Basic' ? (
+              <SandpackConsole
+                showSyntaxError
+                resetOnPreviewRestart
+                style={{ height: '100%' }}
+              />
+            ) : (
+              <LogsContainer />
+            ),
           ]}
         />
       </SandpackProvider>

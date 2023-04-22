@@ -15,6 +15,10 @@
 - [CodeSandbox](https://codesandbox.io/s/react-sandbox-bcggdd)
 - [Stackblitz](https://stackblitz.com/edit/vitejs-vite-ic6mks?file=src/App.jsx) (If preview is not working, try `Open in New Tab` button)
 
+## Features
+
+- Choose between console types: `Basic` or `Advanced`([console-feed](https://www.npmjs.com/package/console-feed))
+
 ## Installation
 
 Using npm
@@ -70,6 +74,7 @@ interface Props {
     | 'vite-react-ts'; // Default "react"
   cdns?: string[]; // Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']
   tabIndex?: number; // Default 0
+  consoleType?: 'Basic' | 'Advanced'; // Default: Basic, it uses console-feed for 'Advanced'
 }
 ```
 

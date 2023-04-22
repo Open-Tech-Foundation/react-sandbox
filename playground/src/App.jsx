@@ -47,7 +47,12 @@ function App() {
         code={htmlCode}
         files={{ '/styles.css': 'body {  color: orange; }' }}
       /> */}
-      {/* <SandBox tabIndex={1} template="vite-react" code={reactCode} /> */}
+      <SandBox
+        tabIndex={1}
+        template="vite-react"
+        code={reactCode}
+        consoleType="Advanced"
+      />
     </div>
   );
 }
