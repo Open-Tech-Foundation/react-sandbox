@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
   "compilerOptions": {
+    "lib": ["DOM", "ES2022"],
     "ignoreDeprecations": "5.0",
     "jsx": "react-jsx",
     "noEmit": true,

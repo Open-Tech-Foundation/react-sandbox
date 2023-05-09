@@ -8,10 +8,12 @@ import {
 } from '@codesandbox/sandpack-react';
 import Tabs from './Tabs';
 import { LogsContainer } from './LogsContainer';
+import SplitPanel from './SplitPanel';
 
 interface Props {
   code: string;
-  consoleType: 'Basic' | 'Advanced';
+  layout?: 'Default' | 'Tabs' | 'Code_Console';
+  consoleType?: 'Basic' | 'Advanced';
   tabIndex?: number;
   deps?: string[];
   files?: Record<string, string>;
@@ -53,6 +55,7 @@ export default function SandBox(props: Props) {
     template = 'react',
     cdns = [],
     consoleType = 'Basic',
+    layout = 'Default',
     ...otherProps
   } = props;
   const sandboxFiles = { ...getDefaultTemplateFile(code, template), ...files };
@@ -68,9 +71,91 @@ export default function SandBox(props: Props) {
   const sandboxDeps: Record<string, string> = {};
   deps.forEach((d) => (sandboxDeps[d] = 'latest'));
 
+  const renderByLayout = () => {
+    switch (layout) {
+      case 'Tabs':
+        return (
+          <Tabs
+            tabIndex={tabIndex}
+            style={styles}
+            labels={['CODE', 'PREVIEW', 'CONSOLE']}
+            panels={[
+              <SandpackLayout style={{ height: '100%' }}>
+                <SandpackCodeEditor
+                  showInlineErrors
+                  showLineNumbers
+                  showTabs
+                  showRunButton
+                  style={{ height: '100%' }}
+                />
+              </SandpackLayout>,
+              <SandpackPreview showNavigator style={{ height: '100%' }} />,
+              consoleType === 'Basic' ? (
+                <SandpackConsole
+                  showSyntaxError
+                  resetOnPreviewRestart
+                  style={{ height: '100%' }}
+                />
+              ) : (
+                <LogsContainer />
+              ),
+            ]}
+          />
+        );
+      case 'Code_Console':
+        return (
+          <SandpackLayout style={{ height: '100%' }}>
+            <SandpackPreview style={{ display: 'none' }} />
+            <SplitPanel
+              left={
+                <SandpackCodeEditor
+                  showInlineErrors
+                  showLineNumbers
+                  showTabs
+                  showRunButton
+                  style={{ height: '100%' }}
+                />
+              }
+              right={
+                consoleType === 'Basic' ? (
+                  <SandpackConsole
+                    showSyntaxError
+                    resetOnPreviewRestart
+                    style={{ height: '100%' }}
+                  />
+                ) : (
+                  <LogsContainer />
+                )
+              }
+            />
+          </SandpackLayout>
+        );
+      default:
+        return (
+          <SandpackLayout style={{ height: '100%' }}>
+            <SplitPanel
+              left={
+                <SandpackCodeEditor
+                  showInlineErrors
+                  showLineNumbers
+                  showTabs
+                  showRunButton
+                  style={{ height: '100%' }}
+                />
+              }
+              right={
+                <SandpackPreview showNavigator style={{ height: '100%' }} />
+              }
+            />
+          </SandpackLayout>
+        );
+    }
+  };
+
   return (
     <div style={styles}>
       <SandpackProvider
+        style={{ height: '100%' }}
         template={template}
         options={{ externalResources: cdns }}
         theme="dark"
@@ -79,32 +164,7 @@ export default function SandBox(props: Props) {
           dependencies: sandboxDeps,
         }}
       >
-        <Tabs
-          tabIndex={tabIndex}
-          style={styles}
-          labels={['CODE', 'PREVIEW', 'CONSOLE']}
-          panels={[
-            <SandpackLayout style={{ height: '100%' }}>
-              <SandpackCodeEditor
-                showInlineErrors
-                showLineNumbers
-                showTabs
-                showRunButton
-                style={{ height: '100%' }}
-              />
-            </SandpackLayout>,
-            <SandpackPreview showNavigator style={{ height: '100%' }} />,
-            consoleType === 'Basic' ? (
-              <SandpackConsole
-                showSyntaxError
-                resetOnPreviewRestart
-                style={{ height: '100%' }}
-              />
-            ) : (
-              <LogsContainer />
-            ),
-          ]}
-        />
+        {renderByLayout()}
       </SandpackProvider>
     </div>
   );

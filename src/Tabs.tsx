@@ -13,8 +13,8 @@ export default function Tabs({ tabIndex, labels, panels, style }: Props) {
     const styles: Record<string, string> = {
       background: i === selectedIndex ? '#0074D9' : '#AAAAAA',
       color: 'white',
-      padding: '8px',
-      fontSize: '14px',
+      padding: '6px',
+      fontSize: '12px',
       fontWeight: 'bold',
       cursor: 'pointer',
     };
@@ -58,7 +58,7 @@ export default function Tabs({ tabIndex, labels, panels, style }: Props) {
             style={{
               visibility: selectedIndex === i ? 'visible' : 'hidden',
               position: 'absolute',
-              top: 10,
+              top: 5,
               left: 0,
               width: '100%',
               border: '1px solid gray',
