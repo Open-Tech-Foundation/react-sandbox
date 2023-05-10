@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.11.0
+
+### Minor Changes
+
+- 55519b7: Added multiple layouts
+
 ## 0.10.0
 
 ### Minor Changes
