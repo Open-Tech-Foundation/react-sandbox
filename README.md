@@ -4,11 +4,11 @@
 
 ⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
 
-![Screenshot](./Screenshot.png)
+![Demo gif](./assets/demo.gif)
 
 </div>
 
-> The [CodeSandbox](https://codesandbox.io/) sandpack wrapper with tabs layout.
+> The [CodeSandbox](https://codesandbox.io/) sandpack wrapper with additional features.
 
 ## View Demo
 
@@ -17,6 +17,7 @@
 
 ## Features
 
+- Multiple Layouts (`Tabs`, `Code+Console`, etc)
 - Choose between console types: `Basic` or `Advanced`([console-feed](https://www.npmjs.com/package/console-feed))
 
 ## Installation
@@ -46,9 +47,8 @@ import { SandBox } from '@opentf/react-sandbox';
 
 export default function App() {
   const code = `export default function App() {
-      return <h1>Hello world</h1>
-    }
-  `;
+    return <h1>Hello world</h1>
+  }`;
 
   return <SandBox code={code} />;
 }
@@ -56,27 +56,16 @@ export default function App() {
 
 ## Props
 
-```ts
-interface Props {
-  code: string; // Template specific default file content
-  deps?: string[]; // npm dependencies, eg: ['lodash']
-  files?: Record<string, string>;
-  template?:
-    | 'react'
-    | 'react-ts'
-    | 'vanilla'
-    | 'vanilla-ts'
-    | 'static'
-    | 'nextjs'
-    | 'node'
-    | 'vite'
-    | 'vite-react'
-    | 'vite-react-ts'; // Default "react"
-  cdns?: string[]; // Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']
-  tabIndex?: number; // Default 0
-  consoleType?: 'Basic' | 'Advanced'; // Default: Basic, it uses console-feed for 'Advanced'
-}
-```
+| Name        | Type                   | Required | Default   | Description                                                                                                                           |
+| ----------- | ---------------------- | -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| code        | string                 | Yes      | ''        | Template specific default file content <br /> Eg: `nextjs` -> `pages/index.js`                                                        |
+| template    | string                 | No       | 'react'   | The codesandbox template.                                                                                                             |
+| layout      | string                 | No       | 'Default' | Currently, there are three presets available: <br />1. `Default`<br /> 2.`Tabs`<br /> 3. `Code_Console`                               |
+| deps        | string[]               | No       | []        | The npm dependencies.<br /> eg: ['lodash', 'immer@10.0.0'].                                                                           |
+| files       | Record<string, string> | No       | {}        | The files prop accepts an object, where each key is the relative path of that file in the sandbox folder structure.                   |
+| cdns        | string[]               | No       | []        | Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']                                                            |
+| tabIndex    | number                 | No       | 0         | The tab index to select in the `Tabs` layout                                                                                          |
+| consoleType | string                 | No       | 'Basic'   | There are two types, `Basic` and `Advanced`. <br /> It uses [console-feed](https://www.npmjs.com/package/console-feed) for 'Advanced' |
 
 ## License
 

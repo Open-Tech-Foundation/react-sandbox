@@ -69,7 +69,14 @@ export default function SandBox(props: Props) {
   };
 
   const sandboxDeps: Record<string, string> = {};
-  deps.forEach((d) => (sandboxDeps[d] = 'latest'));
+  deps.forEach((d) => {
+    const match = d.match(/(?:(@.+\/))?(.+)/);
+    if (match) {
+      const org = match[1] || '';
+      const [pkgName, ver] = (match[2] || '').split('@');
+      sandboxDeps[org + pkgName] = ver || 'latest';
+    }
+  });
 
   const renderByLayout = () => {
     switch (layout) {
