@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.12.0
+
+### Minor Changes
+
+- aff1aa7: Update code sandbox to upstream
+
 ## 0.11.0
 
 ### Minor Changes
