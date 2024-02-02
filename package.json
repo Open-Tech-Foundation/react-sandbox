@@ -20,9 +20,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "scripts": {
     "build": "tsup",
     "lint": "eslint src/** --fix",
@@ -31,12 +28,10 @@
     "publish-packages": "pnpm run ci && changeset version && changeset publish"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/open-tech-foundation/react-sandbox.git"
-  },
+  "repository": "git@github.com:Open-Tech-Foundation/react-sandbox.git",
   "author": "Thanga Ganapathy",
   "license": "MIT",
   "devDependencies": {
@@ -57,7 +52,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.9.0",
+    "@codesandbox/sandpack-react": "^2.11.3",
     "console-feed": "^3.5.0",
     "strip-ansi": "^7.1.0"
   }
