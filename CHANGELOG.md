@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.13.0
+
+### Minor Changes
+
+- cde1a26: Added pkg publishing provenance.
+
 ## 0.12.0
 
 ### Minor Changes
