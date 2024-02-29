@@ -1,8 +1,10 @@
+<img align="left" src="https://open-tech-foundation.pages.dev/img/Logo.svg" width="50" height="50">
+
+&nbsp;[OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
+
 <div align="center">
 
 # React Sandbox
-
-⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
 
 ![Demo gif](./assets/demo.gif)
 
@@ -22,22 +24,20 @@
 
 ## Installation
 
-Using npm
-
 ```sh
 npm install @opentf/react-sandbox
 ```
-
-Using Yarn
 
 ```sh
 yarn add @opentf/react-sandbox
 ```
 
-Using pnpm
-
 ```sh
 pnpm add @opentf/react-sandbox
+```
+
+```sh
+bun add @opentf/react-sandbox
 ```
 
 ## Usage
@@ -66,6 +66,10 @@ export default function App() {
 | cdns        | string[]               | No       | []        | Any third party external dependencies, eg: ['https://cdn.tailwindcss.com']                                                            |
 | tabIndex    | number                 | No       | 0         | The tab index to select in the `Tabs` layout                                                                                          |
 | consoleType | string                 | No       | 'Basic'   | There are two types, `Basic` and `Advanced`. <br /> It uses [console-feed](https://www.npmjs.com/package/console-feed) for 'Advanced' |
+
+## Related
+
+- [react-node-repl](https://www.npmjs.com/package/@opentf/react-node-repl)
 
 ## License
 

@@ -52,7 +52,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.11.3",
+    "@codesandbox/sandpack-react": "^2.13.5",
     "console-feed": "^3.5.0",
     "strip-ansi": "^7.1.0"
   }
