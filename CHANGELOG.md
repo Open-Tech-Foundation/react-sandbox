@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.14.0
+
+### Minor Changes
+
+- 084fc3e: Updated pkg deps.
+
 ## 0.13.0
 
 ### Minor Changes
