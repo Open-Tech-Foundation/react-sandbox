@@ -2,8 +2,7 @@ import SandBox from '../../src/SandBox';
 import styles from './App.module.css';
 
 function App() {
-  const vanilaCode = `import {range} from "@opentf/utils";
-  console.log(range(1, 8));
+  const vanilaCode = `import {range} from "@opentf/std";
   console.log(range(1, 5));`;
 
   const nodeCode = `const http = require('http');
@@ -56,7 +55,7 @@ server.listen(port, hostname, () => {
         consoleType="Advanced"
         layout="Code_Console"
         deps={[
-          '@opentf/utils',
+          '@opentf/std',
           '@opentf/react-state@0.13.1',
           'lodash@4.17.21',
           'dequal',
@@ -65,7 +64,7 @@ server.listen(port, hostname, () => {
       {/* <SandBox
         tabIndex={2}
         template="node"
-        deps={['@opentf/utils']}
+        deps={['@opentf/std']}
         code={nodeCode}
         consoleType="Advanced"
       /> */}
