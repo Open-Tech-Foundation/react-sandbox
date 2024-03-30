@@ -1,5 +1,11 @@
 # @opentf/react-sandbox
 
+## 0.15.0
+
+### Minor Changes
+
+- 400af78: Added missing theme prop.
+
 ## 0.14.0
 
 ### Minor Changes
