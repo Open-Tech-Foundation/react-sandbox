@@ -5,6 +5,7 @@ import {
   SandpackLayout,
   SandpackConsole,
   SandpackPredefinedTemplate,
+  SandpackThemeProp,
 } from '@codesandbox/sandpack-react';
 import Tabs from './Tabs';
 import { LogsContainer } from './LogsContainer';
@@ -20,6 +21,7 @@ interface Props {
   template?: SandpackPredefinedTemplate;
   cdns?: string[];
   style?: Record<string, string>;
+  theme?: SandpackThemeProp;
 }
 
 function getDefaultTemplateFile(code: string, template: string) {
@@ -56,6 +58,7 @@ export default function SandBox(props: Props) {
     cdns = [],
     consoleType = 'Basic',
     layout = 'Default',
+    theme = 'auto',
     ...otherProps
   } = props;
   const sandboxFiles = { ...getDefaultTemplateFile(code, template), ...files };
@@ -86,6 +89,7 @@ export default function SandBox(props: Props) {
             tabIndex={tabIndex}
             style={styles}
             labels={['CODE', 'PREVIEW', 'CONSOLE']}
+            theme={theme === 'dark' ? 'dark' : 'light'}
             panels={[
               <SandpackLayout style={{ height: '100%' }}>
                 <SandpackCodeEditor
@@ -165,7 +169,7 @@ export default function SandBox(props: Props) {
         style={{ height: '100%' }}
         template={template}
         options={{ externalResources: cdns }}
-        theme="dark"
+        theme={theme}
         files={sandboxFiles}
         customSetup={{
           dependencies: sandboxDeps,

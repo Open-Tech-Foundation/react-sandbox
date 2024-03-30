@@ -1,6 +1,8 @@
 import SandBox from '../../src/SandBox';
 import styles from './App.module.css';
 
+import { monokaiPro } from "@codesandbox/sandpack-themes";;
+
 function App() {
   const vanilaCode = `import {range} from "@opentf/std";
   console.log(range(1, 5));`;
@@ -50,17 +52,22 @@ server.listen(port, hostname, () => {
   return (
     <div className={styles.app}>
       <SandBox
+        template="react"
+        code={reactCode}
+        consoleType="Basic"
+        layout="Tabs"
+        deps={['@opentf/std']}
+        theme={monokaiPro}
+      />
+      {/* <SandBox
         template="vanilla"
         code={vanilaCode}
         consoleType="Advanced"
         layout="Code_Console"
         deps={[
           '@opentf/std',
-          '@opentf/react-state@0.13.1',
-          'lodash@4.17.21',
-          'dequal',
         ]}
-      />
+      /> */}
       {/* <SandBox
         tabIndex={2}
         template="node"

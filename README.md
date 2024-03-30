@@ -60,6 +60,7 @@ export default function App() {
 | ----------- | ---------------------- | -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | code        | string                 | Yes      | ''        | Template specific default file content <br /> Eg: `nextjs` -> `pages/index.js`                                                        |
 | template    | string                 | No       | 'react'   | The codesandbox template.                                                                                                             |
+| theme       | SandpackThemeProp      | No       | 'auto'    | The codesandbox [theme](https://sandpack.codesandbox.io/docs/getting-started/themes).                                                 |
 | layout      | string                 | No       | 'Default' | Currently, there are three presets available: <br />1. `Default`<br /> 2.`Tabs`<br /> 3. `Code_Console`                               |
 | deps        | string[]               | No       | []        | The npm dependencies.<br /> eg: ['lodash', 'immer@10.0.0'].                                                                           |
 | files       | Record<string, string> | No       | {}        | The files prop accepts an object, where each key is the relative path of that file in the sandbox folder structure.                   |
@@ -69,7 +70,13 @@ export default function App() {
 
 ## Related
 
-- [react-node-repl](https://www.npmjs.com/package/@opentf/react-node-repl)
+- [@opentf/react-node-repl](https://node-repl.pages.dev/) - The Node.js REPL in a React component.
+
+- [@opentf/react-state](https://react-app-state.pages.dev/) - A global state manager for React.
+
+- [@opentf/react-form](https://react-form.pages.dev/) - A simple form state manager for React.
+
+- [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library.
 
 ## License
 

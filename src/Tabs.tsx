@@ -1,35 +1,44 @@
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
 
 interface Props {
   labels: string[];
   panels: JSX.Element[];
   style: Record<string, string>;
   tabIndex?: number | undefined;
+  theme: 'light' | 'dark';
 }
 
-export default function Tabs({ tabIndex, labels, panels, style }: Props) {
+export default function Tabs({
+  tabIndex,
+  labels,
+  panels,
+  style,
+  theme,
+}: Props) {
   const [selectedIndex, setSelectedIndex] = useState(tabIndex || 0);
   const getStyles = (i: number) => {
-    const styles: Record<string, string> = {
-      background: i === selectedIndex ? '#0074D9' : '#AAAAAA',
-      color: 'white',
+    const bgColor = theme === 'dark' ? 'rgb(23, 26, 28)' : 'rgb(240, 244, 248)';
+    const bgColorSelected =
+      theme === 'dark' ? 'rgb(85, 94, 104)' : 'rgb(205, 215, 225)';
+    const textColor =
+      theme === 'dark' ? 'rgb(221, 231, 238)' : 'rgb(50, 56, 62)';
+    const textColorSelected =
+      theme === 'dark' ? 'rgb(240, 244, 248)' : 'rgb(23, 26, 28)';
+    const borderBottomColor =
+      theme === 'dark' ? 'rgb(240, 244, 248)' : 'rgb(23, 26, 28)';
+    const styles: CSSProperties = {
+      backgroundColor: i === selectedIndex ? bgColorSelected : bgColor,
+      color: i === selectedIndex ? textColorSelected : textColor,
       padding: '6px',
       fontSize: '12px',
-      fontWeight: 'bold',
+      fontWeight: i === selectedIndex ? 'bold' : undefined,
       cursor: 'pointer',
+      border: 0,
     };
-    if (selectedIndex === 0 && i == 1) {
-      styles['borderLeft'] = styles['borderTop'] = styles['borderBottom'] = '0';
-      styles['borderRight'] = '1px solid gray';
-    } else if (selectedIndex === 2 && i == 1) {
-      styles['borderRight'] =
-        styles['borderTop'] =
-        styles['borderBottom'] =
-          '0';
-      styles['borderLeft'] = '1px solid gray';
-    } else {
-      styles['border'] = '0';
-    }
+
+    styles['borderBottom'] =
+      i === selectedIndex ? `2px solid ${borderBottomColor}` : '0px';
+
     return styles;
   };
 
